@@ -339,4 +339,66 @@ function WebsiteBlocker() {
         return days ? days.split(',') : [];
     };
 
+    WB.prototype.goingToBlock = function(url, regexp, targetTime, currentTime, dayOfWeek) {
+        this.logger('isBlocked - start');
+        var pos = url.search(new RegExp(regexp, 'ig'));
+        this.logger(pos);
+
+        if (5 < pos) {
+            if (this.useTimeLimit) {
+                this.logger('Time Limit!');
+                return false;
+            }
+
+            if (!this.useTimeGroup) {
+                this.logger('Time Group!');
+                return true;
+            }
+
+            if (typeof this.daysOfWeek === 'object'
+                && this.matchDaysOfWeek(this.daysOfWeek, dayOfWeek)) {
+
+                if (targetTime.length === 0) {
+                    this.logger('Target Time!');
+                    return true;
+                }
+
+                for (var i in targetTime) {
+                    var current = Number(currentTime);
+                    var target  = targetTime[i]
+                                      .split('-')
+                                      .map(function(time) {
+                                          return Number(time);
+                                      });
+
+                    if (target[0] >= current) {
+                        return target[0];
+                    }
+                }
+            }
+        }
+
+        return false;
+    };
+
+    WB.prototype.getStartTime = function(id, url, testmode) {
+        this.blockedList = ls.get('blocked_list');
+        var currentTime = null;
+        var pos = '';
+
+        if (this.blockedList) {
+            currentTime = this.makeTime();
+            this.useTimeGroup = ls.get('flag-timegroup_function');
+            this.daysOfWeek = ls.get('days_of_week');
+
+            for (var key in this.blockedList) {
+                if (this.goingToBlock(url, this.blockedList[key].regexp, this.blockedList[key].time, currentTime, this.dayOfWeek)) {
+                    return this.goingToBlock(url, this.blockedList[key].regexp, this.blockedList[key].time, currentTime, this.dayOfWeek);
+                }
+            }
+        }
+
+        return false;
+    };
+
 })(WebsiteBlocker);
