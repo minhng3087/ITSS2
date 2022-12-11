@@ -8,10 +8,10 @@
 
 // Migration
 if (window.localStorage.getItem('flag-password_function') === null) {
-    ls.set('flag-block_function',     !ls.get('blocked_disabled'));
+    ls.set('flag-block_function', !ls.get('blocked_disabled'));
     ls.set('flag-timegroup_function', !ls.get('time_limit_disabled'));
-    ls.set('flag-option_page_link',   !ls.get('option_page_link_disabled'));
-    ls.set('flag-password_function',  false);
+    ls.set('flag-option_page_link', !ls.get('option_page_link_disabled'));
+    ls.set('flag-password_function', false);
     //ls.set('flag-timelimit_function', false);
     ls.rm('blocked_disabled');
     ls.rm('time_limit_disabled');
@@ -23,7 +23,7 @@ if (window.localStorage.getItem('flag-password_function') === null) {
 
 if (!ls.get('_installed')) {
     //chrome.tabs.create({ url: 'welcome.html', selected: true })
-    ls.set('days_of_week', [0,1,2,3,4,5,6]);
+    ls.set('days_of_week', [0, 1, 2, 3, 4, 5, 6]);
     ls.set('_installed', true);
 }
 
@@ -42,17 +42,17 @@ if (!ls.get('_read_news') || ls.get('_read_news') < ENV_NEWS_VERSION) {
 var afterFunction = null;
 var WB = new WebsiteBlocker();
 
-chrome.tabs.onCreated.addListener(function(tab) {
+chrome.tabs.onCreated.addListener(function (tab) {
     WB.run(tab);
 });
 
-chrome.tabs.onActivated.addListener(function(info) {
-    chrome.tabs.get(info.tabId, function(tab) {
+chrome.tabs.onActivated.addListener(function (info) {
+    chrome.tabs.get(info.tabId, function (tab) {
         WB.run(tab);
     });
 });
 
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     if (changeInfo.status === 'loading') {
         WB.run(tab);
         return;
@@ -60,12 +60,12 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 });
 
 function getUrl(callback) {
-    chrome.tabs.getSelected(null, function(tab) {
+    chrome.tabs.getSelected(null, function (tab) {
         if (tab.url) {
             afterFunction = callback;
             try {
                 chrome.tabs.executeScript(null, { file: 'js/injection.js' });
-            } catch (e) {}
+            } catch (e) { }
         } else {
             callback(null);
         }
@@ -73,12 +73,11 @@ function getUrl(callback) {
 };
 
 function checkCurrentTab() {
-    chrome.tabs.getSelected(null, function(tab) {
+    chrome.tabs.getSelected(null, function (tab) {
         WB.run(tab);
     });
 };
 
-chrome.extension.onRequest.addListener(function(tab) {
+chrome.extension.onRequest.addListener(function (tab) {
     afterFunction(tab);
 });
-
