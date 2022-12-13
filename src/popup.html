@@ -1,70 +1,149 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="twitter:widgets:csp" content="on">
-        <title>Popup | Website Blocker</title>
-        <link rel="stylesheet" href="css/reset.css" />
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/popup.css" />
-        <link rel="stylesheet" href="css/form.css" />
-        <script src="lib/jquery-2.0.0.min.js"></script>
-        <script src="js/common.js"></script>
-        <script src="js/utils.js"></script>
-        <script src="js/functions.js"></script>
-        <script src="js/website-blocker.js"></script>
-        <script src="js/controller.js"></script>
-    </head>
-    <body>
-        <div id="container" style="display: none; width: 600px; height: 100%;">
-            <header>
-                <h1><b i18n="ext_name">Website Blocker</b></h1>
-            </header>
-            <section class="top-shadow clearfix">
-                <article id="block-ng" i18n="block_ng" class="hide">
-                    This page cannot block.
-                </article>
-                <article id="block-already" i18n="block_already" class="hide">
-                    This page is already blocked.
-                </article>
-                <article id="block-ok" class="hide">
-                    <div class="group">
-                        <h3 i18n="add_domain">URL</h3>
-                        <input type="text" id="tmp-hostname" style="width: 95%;" placeholder="www.facebook.com" />
-                    </div>
-                    <div class="group">
-                        <h3 i18n="add_block_time">--</h3>
-                        <div class="time-group">
-                            <span i18n="add_time_1"></span>
-                            <input type="time" id="tmp-time-start" style="width: 6em;" value="00:00" placeholder="00:00" />
-                            <span i18n="add_time_2"></span>
-                            <input type="time" id="tmp-time-end" style="width: 6em;" value="23:59" placeholder="23:59" />
-                            <span i18n="add_time_3"></span>
-                        </div>
-                        <p style=" position: relative;top: -31px; left: 56%; font-size: 19px; font-weight: 600;" id="demo"></p>
-                    </div>
-                    <button id="blockthis" i18n="add_blockthis" class="submit">Block this!</button>
-                </article>
-            </section>
-            <footer class="clearfix">
-                <nav id="control-nav" class="clearfix">
-                    <!-- <button i18n="tell_a_friend" class="tell_a_friend wb-button">--</button> -->
-                    <button i18n="options" class="options wb-button">--</button>
-                    <!-- <button i18n="please_support_me" class="please_support_me wb-button">--</button> -->
-                    <button i18n="bug_report" class="bug_report wb-button">--</button>
-                    <button i18n="close" class="popup-close wb-button">--</button>
-                </nav>
-                <div class="clearfix">
-                    <small class="copyright">
-                        &copy; <a href="https://github.com/minhng3087/ITSS2" target="_blank">Ebisu</a>.
-                    </small>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="twitter:widgets:csp" content="on">
+    <title>Popup | Website Blocker</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/popup.css" />
+    <link rel="stylesheet" href="css/form.css" />
+    <script src="lib/jquery-2.0.0.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/website-blocker.js"></script>
+    <script src="js/controller.js"></script>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        #time-tracking-box {
+            margin-bottom: 1rem;
+
+            background-color: #dddddd;
+            color: black;
+            padding: 1rem 2rem;
+            padding-left: 1rem;
+        }
+
+        .tracking-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .tracking-item label {
+            font-weight: bold;
+        }
+
+        .tracking-item p {
+            margin-top: 0.5rem;
+        }
+
+        #tabs-list {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" style="display: none; width: 600px; height: 100%;">
+        <header>
+            <h1><b i18n="ext_name">Website Blocker</b></h1>
+        </header>
+        <section class="top-shadow clearfix">
+            <article id="block-ng" i18n="block_ng" class="hide">
+                This page cannot block.
+            </article>
+            <article id="block-already" i18n="block_already" class="hide">
+                This page is already blocked.
+            </article>
+            <article id="block-ok" class="hide">
+                <div class="group">
+                    <h3 i18n="add_domain">URL</h3>
+                    <input type="text" id="tmp-hostname" style="width: 95%;" placeholder="www.facebook.com" />
                 </div>
-            </footer>
-            <form id="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="hidden" name="hosted_button_id" value="MVTPVJW3QACLW" />
-            </form>
-        </div>
-        <script src="js/page-popup.js"></script>
-    </body>
+                <div class="group">
+                    <h3 i18n="add_block_time">--</h3>
+                    <div class="time-group">
+                        <span i18n="add_time_1"></span>
+                        <input type="time" id="tmp-time-start" style="width: 6em;" value="00:00" placeholder="00:00" />
+                        <span i18n="add_time_2"></span>
+                        <input type="time" id="tmp-time-end" style="width: 6em;" value="23:59" placeholder="23:59" />
+                        <span i18n="add_time_3"></span>
+                    </div>
+                    <p style=" position: relative;top: -31px; left: 56%; font-size: 19px; font-weight: 600;" id="demo">
+                    </p>
+                </div>
+                <button id="blockthis" i18n="add_blockthis" class="submit">Block this!</button>
+            </article>
+        </section>
+        <!-- Tab time tracking UI -->
+        <section class="top-shadow clearfix">
+            <article id="time-tracking" i18n="block_ng" class="hide">
+                Time tracking
+            </article>
+            <div id="time-tracking-box">
+                <div class="tracking-item">
+                    <label>Current Tab: </label>
+                    <p id="current-tab-title"></p>
+                </div>
+                <div class="tracking-item">
+                    <label>Time Start: </label>
+                    <p id="time-start"></p>
+                </div>
+                <div class="tracking-item">
+                    <label>Used Time: </label>
+                    <p id="used-time"></p>
+                </div>
+            </div>
+
+            <h1>Tabs tracking list</h1>
+            <table id="tabs-list">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Url name</th>
+                        <th>Time start</th>
+                        <th>Time used</th>
+                    </tr>
+                </thead>
+                <tbody id="tabs-list-body">
+
+                </tbody>
+            </table>
+        </section>
+        <footer class="clearfix">
+            <nav id="control-nav" class="clearfix">
+                <!-- <button i18n="tell_a_friend" class="tell_a_friend wb-button">--</button> -->
+                <button i18n="options" class="options wb-button">--</button>
+                <!-- <button i18n="please_support_me" class="please_support_me wb-button">--</button> -->
+                <button i18n="bug_report" class="bug_report wb-button">--</button>
+                <button i18n="close" class="popup-close wb-button">--</button>
+            </nav>
+            <div class="clearfix">
+                <small class="copyright">
+                    &copy; <a href="http://tetsuwo.tumblr.com/" target="_blank">Tetsuwo OISHI</a>.
+                </small>
+            </div>
+        </footer>
+        <form id="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="MVTPVJW3QACLW" />
+        </form>
+    </div>
+    <script src="js/page-popup.js"></script>
+</body>
+
 </html>

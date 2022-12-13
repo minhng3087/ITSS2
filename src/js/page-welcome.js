@@ -7,20 +7,20 @@
 function resizer() {
     var $self = $('#blocked-container');
     $self.css({
-        left : (window.innerWidth  - $self.get(0).offsetWidth)  / 2,
-        top  : (window.innerHeight - $self.get(0).offsetHeight) / 2
+        left: (window.innerWidth - $self.get(0).offsetWidth) / 2,
+        top: (window.innerHeight - $self.get(0).offsetHeight) / 2
     });
 }
 
-$(window).load(function() {
+$(window).load(function () {
     Controller.sharePage();
-    i18n(function(){
+    i18n(function () {
         $('#blocked-container').show();
         resizer();
     });
 });
 
-window.onresize = function() {
+window.onresize = function () {
     resizer();
 };
 
