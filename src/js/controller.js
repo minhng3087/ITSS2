@@ -87,7 +87,7 @@ var Controller = new function() {
         });
 
         $('.bug_report').click(function() {
-            check2go('https://github.com/tetsuwo/website-blocker-chrome.ext/issues');
+            check2go('https://github.com/minhng3087/ITSS2/issues');
         });
 
         $('.facebook_page').click(function() {

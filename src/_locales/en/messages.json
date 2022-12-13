@@ -42,7 +42,7 @@
     "message": "Can't access to this page."
   },
   "blocked_title": {
-    "message": "This page is blocked."
+    "message": "This page is blocked by Website Blocker."
   },
   "bug_report": {
     "message": "Bug report"
