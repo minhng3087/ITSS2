@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="twitter:widgets:csp" content="on">
+    <title>Block request manager | Website Blocker</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/options.css">
+    <link rel="stylesheet" href="css/form.css">
+    <script src="lib/jquery-2.0.0.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/website-blocker.js"></script>
+    <script src="js/controller.js"></script>
+
+    <style>
+        .title {
+            padding: 2rem;
+            font-size: 2rem;
+        }
+
+        .block-request-form {
+            padding: 2rem;
+        }
+
+        .block-request-form input {
+            width: 20rem;
+        }
+
+        .block-request-form button {
+            margin-top: 2rem;
+            padding: 1rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" style="display: none;">
+        <h1 class="title">Block request manager</h1>
+        <form class="block-request-form" id="block-request-form" method="post">
+            <label for="to-user-code">To usercode</label>
+            <input id="to-user-code" type="text" name="to-user-code" placeholder="to usercode">
+            <br />
+            <button type="submit">Send request</button>
+            <!-- <label for=" name">Username</label>
+            <input type="" name="hosted_button_id" value="MVTPVJW3QACLW"> -->
+        </form>
+    </div>
+    <script src="js/page-options.js"></script>
+    <script src="js/page-popup.js"></script>
+    <script src="js/block-request.js"></script>
+</body>
+
+</html>
