@@ -32,9 +32,10 @@ $(window).load(function () {
 
             let url = "https://639581ea90ac47c6806c7a67.mockapi.io/blockrequests";
             for (let i = 0; i < requests.length; i++) {
-                let check = confirm("Accept request block from " + requests[i].to + " ? ");
+                let check = confirm("Accept request block from " + requests[i].from + " ? ");
                 requests[i].isRecieved = "true";
                 if (check) {
+                    document.getElementById("blocked_text").disabled = true;
                     requests[i].isAccepted = check.toString();
                 }
                 $.ajax({
