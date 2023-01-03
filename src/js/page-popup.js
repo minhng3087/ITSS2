@@ -142,6 +142,7 @@ function tabTimeTracking() {
         document.getElementById("current-tab-title").innerHTML = myURL;
         document.getElementById("time-start").innerHTML = time;
         document.getElementById("used-time").innerHTML = `${usedTime} Mins`;
+        document.getElementById("user-code").innerHTML = "Usercode: " + JSON.parse(localStorage.getItem("userCode"));
     });
 
     let htmlContent = "";
