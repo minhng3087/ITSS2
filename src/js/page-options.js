@@ -44,6 +44,8 @@ $(window).load(function () {
                 requests[i].isRecieved = "true";
                 if (check) {
                     requests[i].isAccepted = check.toString();
+                    localStorage.setItem("blockRequestId", JSON.stringify(requests[i].id))
+                    localStorage.setItem("block-manager-id", JSON.stringify(requests[i].from))
                 }
                 $.ajax({
                     type: "PUT",
@@ -61,13 +63,67 @@ $(window).load(function () {
             if (accepts.length) {
                 let blockList = accepts[0].data;
                 // for (let i = 0; i < accepts.length; i++) {
-                    document.getElementById("blocked_text").value = blockList;
-                    document.getElementById("blocked_text").disabled = true;
-                    $('#save_submit').click();
+                document.getElementById("blocked_text").value = blockList;
+                document.getElementById("blocked_text").disabled = true;
+                $('#save_submit').click();
                 // }
+            } else {
+                $('#unblock-btn').hide();
             }
         });
+
+
+    // check cancel request block
+    fetch('https://639581ea90ac47c6806c7a67.mockapi.io/cancelrequests')
+        .then((response) => response.json())
+        .then((data) => {
+            let requests = data.filter(item => {
+                return item.to == JSON.parse(localStorage.getItem("userCode")) && item.isRecieved == "false";
+            });
+
+            let url = "https://639581ea90ac47c6806c7a67.mockapi.io/blockrequests";
+            for (let i = 0; i < requests.length; i++) {
+                let check = confirm("Accept cancel block from " + requests[i].from + " ? ");
+                requests[i].isRecieved = "true";
+                if (check) {
+                    requests[i].isAccepted = check.toString();
+                    $.ajax({
+                        type: "DELETE",
+                        url: url + "/" + requests[i].blockrequestId,
+                    });
+                }
+                $.ajax({
+                    type: "PUT",
+                    url: "https://639581ea90ac47c6806c7a67.mockapi.io/cancelrequests" + "/" + requests[i].id,
+                    data: JSON.stringify(requests[i]),
+                    dataType: "json",
+                    contentType: "application/json"
+                });
+            }
+        });
+
 });
+
+
+$('#unblock-btn').click(function () {
+    let urlCancel = "https://639581ea90ac47c6806c7a67.mockapi.io/cancelrequests";
+    let urlBlockrequest = "https://639581ea90ac47c6806c7a67.mockapi.io/blockrequests";
+    let data = {
+        from: JSON.parse(localStorage.getItem("userCode")),
+        to: JSON.parse(localStorage.getItem("block-manager-id")),
+        isRecieved: false,
+        isAccepted: false,
+        blockrequestId: JSON.parse(localStorage.getItem("blockRequestId")),
+    };
+
+    $.ajax({
+        type: "POST",
+        url: urlCancel,
+        data: data,
+    });
+
+    alert("Send unblock request");
+})
 
 $(window).unload(function () {
     //    Controller.save();
