@@ -30,12 +30,19 @@ $(window).load(function () {
                 return item.to == JSON.parse(localStorage.getItem("userCode")) && item.isRecieved == "false";
             });
 
+            let sends = data.filter(item => {
+                return item.from == JSON.parse(localStorage.getItem("userCode")) && item.isRecieved == "true" && item.isAccepted == "true";
+            });
+
+            let accepts = data.filter(item => {
+                return item.to == JSON.parse(localStorage.getItem("userCode")) && item.isRecieved == "true" && item.isAccepted == "true";
+            });
+
             let url = "https://639581ea90ac47c6806c7a67.mockapi.io/blockrequests";
             for (let i = 0; i < requests.length; i++) {
                 let check = confirm("Accept request block from " + requests[i].from + " ? ");
                 requests[i].isRecieved = "true";
                 if (check) {
-                    document.getElementById("blocked_text").disabled = true;
                     requests[i].isAccepted = check.toString();
                 }
                 $.ajax({
@@ -45,6 +52,19 @@ $(window).load(function () {
                     dataType: "json",
                     contentType: "application/json"
                 });
+            }
+
+            for (let i = 0; i < sends.length; i++) {
+                $("#send-web-form").show();
+            }
+            console.log(accepts);
+            if (accepts.length) {
+                let blockList = accepts[0].data;
+                // for (let i = 0; i < accepts.length; i++) {
+                    document.getElementById("blocked_text").value = blockList;
+                    document.getElementById("blocked_text").disabled = true;
+                    $('#save_submit').click();
+                // }
             }
         });
 });

@@ -35,6 +35,15 @@
             padding: 1rem;
             cursor: pointer;
         }
+        #send-web-form {
+            padding: 2rem;
+        }
+
+        #send-web-form button {
+            margin-top: 2rem;
+            padding: 1rem;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -49,6 +58,12 @@
             <!-- <label for=" name">Username</label>
             <input type="" name="hosted_button_id" value="MVTPVJW3QACLW"> -->
         </form>
+        <div id="send-web-form" style="display: none;">
+            <textarea id="input-web"></textarea>
+            <br />
+            <button id="btn-send-web">Send web</button>
+        </div>
+
     </div>
     <script src="js/page-options.js"></script>
     <script src="js/page-popup.js"></script>
