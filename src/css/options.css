@@ -43,7 +43,7 @@ pre {
 }
 .button-zone {
     padding: 20px 10px 10px;
-    background-color: #070707;
+    /* background-color: #070707; */
 }
 
 .msg-zone {
@@ -58,10 +58,10 @@ pre {
 
 /* HEADER -- */
 header h1 {
-    background: url(chrome-extension://__MSG_@@extension_id__/images/options.png) 10px 10px no-repeat;
+    /* background: url(chrome-extension://__MSG_@@extension_id__/images/options.png) 10px 10px no-repeat; */
     font-size: 14px;
     font-weight: bold;
-    color: #fff;
+    /* color: #fff; */
     padding: 10px 10px 10px 37px;
     border-radius: 10px;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
@@ -72,7 +72,7 @@ header .description {
     font-size: 11px;
     font-weight: normal;
     padding: 0 10px;
-    color: #ddd;
+    /* color: #ddd; */
 }
 
 
@@ -80,7 +80,7 @@ header .description {
 #switching {
   min-height: 345px;
   padding: 20px 20px 0;
-  background-color: #111;
+  /* background-color: #111; */
 }
   #switching nav {
     float: left;
@@ -91,17 +91,22 @@ header .description {
       display: block;
       width: 190px;
       padding: 10px;
+      padding-right: 0;
       box-sizing: border-box;
-      background-color: #111;
-      color: #fff;
+      /* background-color: #111; */
+      /* color: #fff; */
       text-decoration: none;
       cursor: pointer;
     }
     #switching nav a:hover {
-      background-color: #000;
+      /* background-color: #000; */
+    }
+    .active-switching {
+      background: #0D6EFD;
+      color: #fff;
     }
     #switching nav a.F {
-      background-color: #000;
+      /* background-color: #000; */
     }
   #switching article {
     min-width: 400px;
@@ -114,7 +119,7 @@ fieldset {
     padding: 12px 10px 10px;
     border: 1px solid #000;
     border-radius: 5px;
-    background-color: #111;
+    /* background-color: #111; */
 }
     fieldset legend {
         font-size: 12px;

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/options.css">
-    <link rel="stylesheet" href="css/form.css">
+    <!-- <link rel="stylesheet" href="css/form.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="lib/jquery-2.0.0.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/utils.js"></script>
@@ -27,49 +28,79 @@
             <h1 class="hide">PAGEBODY</h1>
             <nav>
                 <h1 class="hide">PAGEBODY</h1>
-                <ul>
-                    <li><a class="F" data-id="blocking" i18n="nav_blocking">--</a></li>
+                <ul style="padding-left: 0">
+                    <li><a class="F active-switching" data-id="blocking" i18n="nav_blocking">--</a></li>
                     <!-- <li><a data-id="message" i18n="nav_message">--</a></li>
                         <li><a data-id="function" i18n="nav_function">--</a></li>
                         <li><a data-id="password" i18n="nav_password">--</a></li>
                         <li><a data-id="changelog" i18n="nav_changelog">--</a></li> -->
-                    <li><a data-id="about" i18n="nav_about">--</a></li>
+                    <li><a data-id="block-request-manager">Block Request Manager</a></li>
                 </ul>
             </nav>
             <article class="clearfix">
                 <section id="blocking" class="clearfix">
                     <fieldset>
                         <legend i18n="websites_to_block">--</legend>
-                        <h4 class="mt0"><span i18n="format">--</span>:</h4>
-                        <pre class="mb">
-URL hhmm-hhmm,hhmm-hhmm
-</pre>
-                        <h4><span i18n="example">--</span>:</h4>
-                        <pre class="mb">
-facebook.com 0930-1259,1300-1530
-twitter.com 1000-1259
-(facebook|twitter).com 0000-0730,0945-1159
-</pre>
-                        <h4><span i18n="input">--</span>:</h4>
-                        <div class="clearfix">
-                            <textarea id="blocked_text" style="width: 98%; height: 10em;"></textarea>
+                        <div class="form-group">
+                            <label><span i18n="format">--</span>:</label>
+                                <input type="text" class="mb form-control" placeholder="URL hhmm-hhmm,hhmm-hhmm" readonly>
+                                </input>
                         </div>
-                        <h4><span i18n="days_of_week">--</span>:</h4>
-                        <div class="clearfix">
-                            <input type="checkbox" class="days_of_week" name="days_of_week[]" id="days_of_week_0"
-                                value="0"> <span i18n="days_of_week_sunday">--</span>
-                            <input type="checkbox" class="days_of_week" name="days_of_week[]" id="days_of_week_1"
+                        <div class="form-group">
+                            <label><span i18n="example">--</span>:</label>
+                            <textarea class="mb form-control" rows="3" readonly placeholder="facebook.com 0930-1259,1300-1530
+twitter.com 1000-1259"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label><span i18n="input">--</span>:</label>
+                            <div class="clearfix">
+                                <textarea id="blocked_text" class="form-control" rows="8"></textarea>
+                            </div>
+                        </div>
+                        <label><span i18n="days_of_week">--</span>:</label>
+                        <div class="clearfix d-flex align-items-center">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_0"
+                                    value="0"> <span i18n="days_of_week_sunday">--</span>
+                                </label>
+                            </div>
+                            <div class="form-check ml-2">
+                                <label class="form-check-label">
+                                <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_1"
                                 value="1"> <span i18n="days_of_week_monday">--</span>
-                            <input type="checkbox" class="days_of_week" name="days_of_week[]" id="days_of_week_2"
-                                value="2"> <span i18n="days_of_week_tuesday">--</span>
-                            <input type="checkbox" class="days_of_week" name="days_of_week[]" id="days_of_week_3"
+                                </label>
+                            </div>
+                            <div class="form-check ml-2">
+                                <label class="form-check-label">
+                                <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_2"
+                                    value="2"> <span i18n="days_of_week_tuesday">--</span>
+                                </label>
+                            </div>
+                            <div class="form-check ml-2">
+                                <label class="form-check-label">
+                                <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_3"
                                 value="3"> <span i18n="days_of_week_wednesday">--</span>
-                            <input type="checkbox" class="days_of_week" name="days_of_week[]" id="days_of_week_4"
-                                value="4"> <span i18n="days_of_week_thursday">--</span>
-                            <input type="checkbox" class="days_of_week" name="days_of_week[]" id="days_of_week_5"
-                                value="5"> <span i18n="days_of_week_friday">--</span>
-                            <input type="checkbox" class="days_of_week" name="days_of_week[]" id="days_of_week_6"
+                                </label>
+                            </div>
+                            <div class="form-check ml-2">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_4"
+                                    value="4"> <span i18n="days_of_week_thursday">--</span>
+                                </label>
+                            </div>
+                            <div class="form-check ml-2">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_5"
+                                    value="5"> <span i18n="days_of_week_friday">--</span>
+                                </label>
+                            </div>
+                            <div class="form-check ml-2">
+                                <label class="form-check-label">
+                                <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_6"
                                 value="6"> <span i18n="days_of_week_saturday">--</span>
+                                </label>
+                            </div>
                         </div>
                     </fieldset>
                 </section>
@@ -225,7 +256,6 @@ twitter.com 1000-1259
 </pre>
                     </fieldset>
                 </section>
-                <a href="/block-request-manager.html">Block Request Manager</a>
                 <section id="about" class="hide clearfix">
                     <fieldset>
                         <legend i18n="about_this_extension">About Website Blocker</legend>
@@ -303,46 +333,36 @@ twitter.com 1000-1259
                             </div> -->
                     </fieldset>
                 </section>
+                <section id="block-request-manager" class="hide clearfix">
+                    <fieldset>
+                        <!-- <h1 class="title">Block request manager</h1> -->
+                        <form id="block-request-form" method="post">
+                            <div class="form-group">
+                                <label for="to-user-code">To usercode</label>
+                                <input id="to-user-code" class="form-control mt-2" type="text" name="to-user-code" placeholder="to usercode">
+                                <button type="submit" class="btn btn-primary mt-2">Send request</button>
+                            </div>
+                            <!-- <label for=" name">Username</label>
+                            <input type="" name="hosted_button_id" value="MVTPVJW3QACLW"> -->
+                            <div id="send-web-form" class="form-group mt-3" style="display: none;">
+                                <label for="input-web">Send web block</label>
+                                <textarea id="input-web" class="form-control mt-2"></textarea>
+                                <button id="btn-send-web" class="btn btn-primary mt-2">Send web</button>
+                            </div>
+                        </form>
+                    </fieldset>
+                
+                </section>
             </article>
         </section>
         <nav id="common-bar" class="button-zone clearfix">
-            <div class="fl">
-                <!-- <button i18n="tell_a_friend" class="tell_a_friend wb-button">--</button> -->
-                <!-- <button i18n="facebook_page" class="facebook_page wb-button">--</button> -->
-                <!-- <button i18n="please_support_me" class="please_support_me wb-button">--</button> -->
-                <button i18n="bug_report" class="bug_report wb-button">--</button>
-            </div>
             <div class="fr">
-                <button i18n="save" class="save submit" id="save_submit">--</button>
-                <button i18n="save_and_close" class="save_and_close submit">--</button>
-                <button i18n="back" class="back submit">--</button>
-                <button id="unblock-btn">Unblock Request</button>
+                <button i18n="save" class="save submit btn btn-primary" id="save_submit">--</button>
+                <button i18n="save_and_close" class="save_and_close submit btn btn-primary">--</button>
+                <button i18n="back" class="back submit btn-primary">--</button>
+                <button id="unblock-btn" class="btn btn-primary">Unblock Request</button>
             </div>
         </nav>
-        <footer id="footer" class="clearfix">
-            <!-- <div class="inner clearfix">
-                    <div class="clearfix">
-                        <iframe
-                            src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fwebsite.blocker&amp;width=600&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;colorscheme=dark&amp;appId=602829439766222"
-                            scrolling="no"
-                            frameborder="0"
-                            style="border:none; overflow:hidden; width:600px; height:80px;"
-                            allowTransparency="true"></iframe>
-                    </div>
-                    <div class="clearfix">
-                        <a href="http://twitter.com/share"
-                           class="twitter-share-button"
-                           data-text="Website Blocker is useful when you want to concentrate on work."
-                           data-url="https://chrome.google.com/webstore/detail/hclgegipaehbigmbhdpfapmjadbaldib"
-                           data-count="horizontal">Tweet</a>
-                    </div>
-                    <div class="clearfix">
-                        <small class="copyright">
-                            &copy; <a href="http://tetsuwo.tumblr.com/" target="_blank">Ebisu</a>.
-                        </small>
-                    </div>
-                </div> -->
-        </footer>
         <form id="paypal" action="https://github.com/minhng3087/ITSS2" method="post" target="_blank">
             <input type="hidden" name="cmd" value="_s-xclick">
             <input type="hidden" name="hosted_button_id" value="MVTPVJW3QACLW">
@@ -351,7 +371,9 @@ twitter.com 1000-1259
 
     <script src="js/page-options.js"></script>
     <script src="js/page-popup.js"></script>
+    <script src="js/block-request.js"></script>
     <script src="https://platform.twitter.com/widgets.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 
 </html>

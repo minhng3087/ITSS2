@@ -7,8 +7,9 @@
     <title>Popup | Website Blocker</title>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/popup.css" />
-    <link rel="stylesheet" href="css/form.css" />
+    <!-- <link rel="stylesheet" href="css/popup.css" /> -->
+    <!-- <link rel="stylesheet" href="css/form.css" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="lib/jquery-2.0.0.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/utils.js"></script>
@@ -17,7 +18,7 @@
     <script src="js/controller.js"></script>
 
     <style>
-        table {
+        /* table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
@@ -55,48 +56,59 @@
             margin-top: 1rem;
         }
 
+        */
+
+        #time-tracking-box {
+            margin-bottom: 1rem;
+
+            background-color: #dddddd;
+            color: black;
+            padding: 1rem 2rem;
+            padding-left: 1rem;
+        }
+
         #user-code {
             margin-top: 1rem;
             margin-bottom: 1rem;
-        }
+        } 
     </style>
 </head>
 
 <body>
-    <div id="container" style="display: none; width: 600px; height: 100%;">
+    <div id="container" style="display: none; width: 600px; height: 100%;" class="p-3">
         <header>
             <h1><b i18n="ext_name">Website Blocker</b></h1>
         </header>
         <section class="top-shadow clearfix">
-            <article id="block-ng" i18n="block_ng" class="hide">
+            <article id="block-ng" i18n="block_ng" class="hide text-black text-bold">
                 This page cannot block.
             </article>
-            <article id="block-already" i18n="block_already" class="hide">
+            <article id="block-already" i18n="block_already" class="hide text-black text-bold">
                 This page is already blocked.
             </article>
             <article id="block-ok" class="hide">
-                <div class="group">
-                    <h3 i18n="add_domain">URL</h3>
-                    <input type="text" id="tmp-hostname" style="width: 95%;" placeholder="www.facebook.com" />
+                <div class="group form-group">
+                    <label i18n="add_domain">URL</label>
+                    <input type="text" class="form-control" id="tmp-hostname" style="width: 95%;" placeholder="www.facebook.com" />
                 </div>
-                <div class="group">
-                    <h3 i18n="add_block_time">--</h3>
-                    <div class="time-group">
-                        <span i18n="add_time_1"></span>
-                        <input type="time" id="tmp-time-start" style="width: 6em;" value="00:00" placeholder="00:00" />
-                        <span i18n="add_time_2"></span>
-                        <input type="time" id="tmp-time-end" style="width: 6em;" value="23:59" placeholder="23:59" />
-                        <span i18n="add_time_3"></span>
+                <div class="group form-group">
+                    <label i18n="add_block_time">--</label>
+                    <div class="time-group d-flex align-items-center">
+                        <label i18n="add_time_1"></label>
+                        <input type="time" id="tmp-time-start" class="form-control mx-2" style="width: 8em;" value="00:00" placeholder="00:00" />
+                        <label i18n="add_time_2"></label>
+                        <input type="time" id="tmp-time-end" class="form-control mx-2" style="width: 8em;" value="23:59" placeholder="23:59" />
+                        <label i18n="add_time_3"></label>
                     </div>
                     <p style=" position: relative;top: -31px; left: 56%; font-size: 19px; font-weight: 600;" id="demo">
                     </p>
                 </div>
-                <button id="blockthis" i18n="add_blockthis" class="submit">Block this!</button>
+                <button id="blockthis" i18n="add_blockthis" class="submit btn btn-primary">Block this!</button>
             </article>
         </section>
         <!-- Tab time tracking UI -->
         <section class="top-shadow clearfix">
-            <h1 id="user-code"></h1>
+            <h3 id="user-code"></h3>
             <article id="time-tracking" i18n="block_ng" class="hide">
                 Time tracking
             </article>
@@ -115,8 +127,8 @@
                 </div>
             </div>
 
-            <h1>Tabs tracking list</h1>
-            <table id="tabs-list">
+            <h3>Tabs tracking list</h3>
+            <table id="tabs-list" class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -131,18 +143,10 @@
             </table>
         </section>
         <footer class="clearfix">
-            <nav id="control-nav" class="clearfix">
-                <!-- <button i18n="tell_a_friend" class="tell_a_friend wb-button">--</button> -->
+            <nav id="control-nav" class="clearfix pb-2">
                 <button i18n="options" class="options wb-button">--</button>
-                <!-- <button i18n="please_support_me" class="please_support_me wb-button">--</button> -->
-                <button i18n="bug_report" class="bug_report wb-button">--</button>
                 <button i18n="close" class="popup-close wb-button">--</button>
             </nav>
-            <div class="clearfix">
-                <small class="copyright">
-                    &copy; <a href="http://tetsuwo.tumblr.com/" target="_blank">Tetsuwo OISHI</a>.
-                </small>
-            </div>
         </footer>
         <form id="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
             <input type="hidden" name="cmd" value="_s-xclick" />
@@ -150,6 +154,7 @@
         </form>
     </div>
     <script src="js/page-popup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 
 </html>

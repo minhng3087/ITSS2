@@ -41,8 +41,10 @@ var Controller = new function () {
         $('#switching nav a').click(function () {
             $('#switching article section').hide();
             $('#switching nav a').removeClass('F');
+            $('#switching nav a').removeClass('active-switching');
             $('#' + $(this).attr('data-id')).show();
             $(this).addClass('F');
+            $(this).addClass('active-switching');
             buildPage();
         });
 
