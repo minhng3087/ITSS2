@@ -155,7 +155,7 @@ function tabTimeTracking() {
             var gap = Math.floor((currentTime.getTime() - startTime.getTime()) / 1000 / 60);
             htmlContent += `<tr>
                 <td>${tabs[i].id}</td>
-                <td>${tabs[i].url}</td>
+                <td class="url-box">${tabs[i].url}</td>
                 <td>${formattedTime}</td>
                 <td>${gap} Mins</td>
               </tr>`;
