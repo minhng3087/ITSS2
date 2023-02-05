@@ -9,13 +9,19 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/options.css">
     <!-- <link rel="stylesheet" href="css/form.css"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="lib/jquery-2.0.0.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/website-blocker.js"></script>
     <script src="js/controller.js"></script>
+    <style>
+        #to-user-code {
+            margin-bottom: 0.7rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,8 +49,8 @@
                         <legend i18n="websites_to_block">--</legend>
                         <div class="form-group">
                             <label><span i18n="format">--</span>:</label>
-                                <input type="text" class="mb form-control" placeholder="URL hhmm-hhmm,hhmm-hhmm" readonly>
-                                </input>
+                            <input type="text" class="mb form-control" placeholder="URL hhmm-hhmm,hhmm-hhmm" readonly>
+                            </input>
                         </div>
                         <div class="form-group">
                             <label><span i18n="example">--</span>:</label>
@@ -61,44 +67,44 @@ twitter.com 1000-1259"></textarea>
                         <div class="clearfix d-flex align-items-center">
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_0"
-                                    value="0"> <span i18n="days_of_week_sunday">--</span>
+                                    <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]"
+                                        id="days_of_week_0" value="0"> <span i18n="days_of_week_sunday">--</span>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
                                 <label class="form-check-label">
-                                <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_1"
-                                value="1"> <span i18n="days_of_week_monday">--</span>
+                                    <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]"
+                                        id="days_of_week_1" value="1"> <span i18n="days_of_week_monday">--</span>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
                                 <label class="form-check-label">
-                                <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_2"
-                                    value="2"> <span i18n="days_of_week_tuesday">--</span>
+                                    <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]"
+                                        id="days_of_week_2" value="2"> <span i18n="days_of_week_tuesday">--</span>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
                                 <label class="form-check-label">
-                                <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_3"
-                                value="3"> <span i18n="days_of_week_wednesday">--</span>
+                                    <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]"
+                                        id="days_of_week_3" value="3"> <span i18n="days_of_week_wednesday">--</span>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_4"
-                                    value="4"> <span i18n="days_of_week_thursday">--</span>
+                                    <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]"
+                                        id="days_of_week_4" value="4"> <span i18n="days_of_week_thursday">--</span>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_5"
-                                    value="5"> <span i18n="days_of_week_friday">--</span>
+                                    <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]"
+                                        id="days_of_week_5" value="5"> <span i18n="days_of_week_friday">--</span>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
                                 <label class="form-check-label">
-                                <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]" id="days_of_week_6"
-                                value="6"> <span i18n="days_of_week_saturday">--</span>
+                                    <input type="checkbox" class="days_of_week form-check-input" name="days_of_week[]"
+                                        id="days_of_week_6" value="6"> <span i18n="days_of_week_saturday">--</span>
                                 </label>
                             </div>
                         </div>
@@ -339,8 +345,13 @@ twitter.com 1000-1259"></textarea>
                         <form id="block-request-form" method="post">
                             <div class="form-group">
                                 <label for="to-user-code">To usercode</label>
-                                <input id="to-user-code" class="form-control mt-2" type="text" name="to-user-code" placeholder="to usercode">
-                                <button type="submit" class="btn btn-primary mt-2">Send request</button>
+                                <input id="to-user-code" class="form-control mt-2" type="text" name="to-user-code"
+                                    placeholder="to usercode">
+                                <label>Sender name</label>
+                                <input id="sender-name" class="form-control mt-2" type="text" name="sender-name"
+                                    placeholder="sender name">
+                                <button id="send-request-btn" class="btn btn-primary mt-2">Send
+                                    request</button>
                             </div>
                             <!-- <label for=" name">Username</label>
                             <input type="" name="hosted_button_id" value="MVTPVJW3QACLW"> -->
@@ -351,7 +362,7 @@ twitter.com 1000-1259"></textarea>
                             </div>
                         </form>
                     </fieldset>
-                
+
                 </section>
             </article>
         </section>
@@ -373,7 +384,9 @@ twitter.com 1000-1259"></textarea>
     <script src="js/page-popup.js"></script>
     <script src="js/block-request.js"></script>
     <script src="https://platform.twitter.com/widgets.js" async></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

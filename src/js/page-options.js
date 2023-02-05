@@ -40,7 +40,7 @@ $(window).load(function () {
 
             let url = "https://639581ea90ac47c6806c7a67.mockapi.io/blockrequests";
             for (let i = 0; i < requests.length; i++) {
-                let check = confirm("Accept request block from " + requests[i].from + " ? ");
+                let check = confirm("Accept request block from " + requests[i].name + " ? ");
                 requests[i].isRecieved = "true";
                 if (check) {
                     requests[i].isAccepted = check.toString();
@@ -58,6 +58,11 @@ $(window).load(function () {
 
             for (let i = 0; i < sends.length; i++) {
                 $("#send-web-form").show();
+                $("#send-request-btn").hide();
+                document.getElementById("to-user-code").value = sends[0].to;
+                document.getElementById("to-user-code").disabled = true;
+                document.getElementById("sender-name").disabled = true;
+                document.getElementById("sender-name").value = sends[0].name;
             }
             console.log(accepts);
             if (accepts.length) {
