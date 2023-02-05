@@ -40,7 +40,7 @@ $(window).load(function () {
 
             let url = "https://639581ea90ac47c6806c7a67.mockapi.io/blockrequests";
             for (let i = 0; i < requests.length; i++) {
-                let check = confirm("Accept request block from " + requests[i].name + " ? ");
+                let check = confirm("Accept request block from " + requests[i].name + " - " + requests[i].from + " ? ");
                 requests[i].isRecieved = "true";
                 if (check) {
                     requests[i].isAccepted = check.toString();
